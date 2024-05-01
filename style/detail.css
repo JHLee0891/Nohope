@@ -1,0 +1,46 @@
+#content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.material-symbols-outlined {
+    font-size: 50px;
+}
+
+#review-wrap{
+    width: 800px;
+}
+
+#detail-content{
+    display: flex;
+    width: 800px;
+    border-radius: 5%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.24);
+    padding:3%;
+    margin-bottom: 100px;
+}
+
+#movie-detail-wrap{
+    margin: 20px;
+}
+
+#title{
+    margin: 0;
+}
+
+#vote-wrap{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.star-icon{
+    color: orangered;
+}
+
+#vote-wrap > span{
+    font-size: 20px;
+}

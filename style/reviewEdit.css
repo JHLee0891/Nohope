@@ -1,41 +1,87 @@
-.reviewEdit{
-    display : none;
-    position : fixed;
-    top : 0;
-    right : 0;
-    width : 100%;
-    height : 100%;
-    background-color: hsla(0, 0%, 0%, 0.5);
-    z-index: 1;
+.review-group {
+  padding: 5% 5% 5% 5%;
+  margin: 20px 20px 20px 20px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.234);
+  border: 1px solid rgba(0, 0, 0, 0.086);
+  background-color: white;
 }
 
-.reviewWindow{
-    position : fixed;
-    top :50%;
-    right : 50%;
-    transform: translate(50%, -50%);
-    width: 30%;
-    z-index: 1;
-    background-color: white;
+.reviewdata {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-top: 2px solid rgba(0, 0, 0, 0.3);
+  padding-top: 20px;
+  line-height: 20px;
 }
 
-.reviewdelete{
-    display : none;
-    position : fixed;
-    top : 0;
-    right : 0;
-    width : 100%;
-    height : 100%;
-    background-color: hsla(0, 0%, 0%, 0.5);
-    z-index: 1;
+.cardbtn {
+  margin-top: 15px;
 }
 
-.reviewDeleteWindow{
-    position : fixed;
-    top :50%;
-    right : 50%;
-    transform: translate(50%, -50%);
-    width: 30%;
-    z-index: 1;
-    background-color: white;
+.input-review-group {
+  margin-top: 10px;
+}
+
+.namespace {
+  font-size: large;
+  font-weight: 600;
+}
+
+.reviewspace {
+}
+
+.reviewEdit {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsla(0, 0%, 0%, 0.5);
+  z-index: 1;
+}
+
+.reviewWindow {
+  position: fixed;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  width: 50%;
+  z-index: 1;
+  background-color: white;
+  padding: 1% 1% 1% 1%;
+}
+
+.reviewdelete {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsla(0, 0%, 0%, 0.5);
+  z-index: 1;
+}
+
+.reviewDeleteWindow {
+  position: fixed;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  width: 30%;
+  z-index: 1;
+  background-color: white;
+  padding: 1% 1% 1% 1%;
+}
+
+.input-edit-group {
+  margin-top: 10px;
+}
+
+.deletetext {
+  margin-bottom: 5px;
+  width: 100%;
 }

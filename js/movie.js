@@ -29,7 +29,7 @@ class Movie {
     }
 
     getClickEvent = () => {
-        document.location.href = `./test.html?id=${this._id}`
+        window.location.href = `detail.html?id=${this._id}`;
     }
 }
 

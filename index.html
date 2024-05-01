@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
     <!-- bootstrap -->
@@ -22,39 +21,59 @@
     <link rel="stylesheet" href="./style/style.css" />
 </head>
 
-<body>
+  <body>
     <header class="py-3 mb-3 border-bottom">
-        <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
-            <span class="d-flex align-items-center col-lg-4 mb-lg-0 link-body-emphasis text-decoration-none"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="material-symbols-outlined">
-                    movie
-                </span>
-            </span>
+      <div
+        class="container-fluid d-grid gap-3 align-items-center"
+        style="grid-template-columns: 1fr 2fr"
+      >
+        <span
+          class="d-flex align-items-center col-lg-4 mb-lg-0 link-body-emphasis text-decoration-none"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span id ="movie-logo" class="material-symbols-outlined"> movie </span>
+        </span>
 
-            <div class="d-flex align-items-center">
-                <div class="w-100 me-3" role="search">
-                    <input type="search" class="form-control jersey-25-regular" placeholder="Search..."
-                        aria-label="Search" id="search-input">
-                </div>
-                <button class="btn btn-outline-secondary jersey-25-regular" type="button"
-                    id="search-button">Search</button>
-            </div>
+        <div class="d-flex align-items-center">
+          <div class="w-100 me-3" role="search">
+            <input
+              type="search"
+              class="form-control jersey-25-regular"
+              placeholder="Search..."
+              aria-label="Search"
+              id="search-input"
+            />
+          </div>
+          <button
+            class="btn btn-outline-secondary jersey-25-regular"
+            type="button"
+            id="search-button"
+          >
+            Search
+          </button>
         </div>
+      </div>
     </header>
     <div id="content-wrap"></div>
 
     <div id="pagination-controls">
-        <span id="btn-prev" class="material-symbols-outlined">
-            navigate_before
-        </span>
-        <div id="pagination-buttons"></div>
-        <span id="btn-next" class="material-symbols-outlined">
-            navigate_next
-        </span>
+      <span id="btn-prev" class="material-symbols-outlined">
+        navigate_before
+      </span>
+      <div id="pagination-buttons"></div>
+      <span id="btn-next" class="material-symbols-outlined">
+        navigate_next
+      </span>
     </div>
 
+<<<<<<< HEAD
     <script type="module" src="./js/main.js"></script>
 </body>
 
 </html>
+=======
+    <script src="app.js"></script>
+  </body>
+</html>
+>>>>>>> main

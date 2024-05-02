@@ -1,5 +1,6 @@
 let idCount = 0;
 let editId = 0;
+let movieId = new URLSearchParams(location.search).get("id")
 
 const $username = document.querySelector("#username");
 const $password = document.querySelector("#password");
@@ -41,9 +42,20 @@ const submitReview = () => {
     return alert("이름이 입력되지 않았습니다.");
   }
 
-  if ($password.value === "") {
-    return alert("비밀번호가 입력되지 않았습니다.");
+  if (isNaN(Number($password.value))) {
+    return alert("비밀번호는 숫자로만 이루어져야 합니다.");
   }
+  else {
+    if ($password.value === "") {
+      return alert("비밀번호가 입력되지 않았습니다.");
+    }
+    else if($password.value.length !== 4){
+      return alert("비밀번호는 4자리만 가능합니다.")
+    }
+  }
+
+
+  console.log(isNaN(Number($password.value)));
 
   if ($review.value === "") {
     return alert("리뷰가 입력되지 않았습니다.");
@@ -55,6 +67,7 @@ const submitReview = () => {
     username: $username.value,
     password: $password.value,
     review: $review.value,
+    movieId : movieId
   };
 
   //세부 사항 페이지에서 영화 내용을 받아서 하나의 웹페이지에서 보여주는 경우에
@@ -72,12 +85,15 @@ const getReviewData = () => {
   idCount = localStorage.getItem("id");
   for (let i = 1; i <= idCount; i++) {
     const review = localStorage.getItem(`reviewdata${i}`);
-    //if(review['title'] !== pageInfo['title']){
-    //      continue;
-    //}
+    const reviewData = JSON.parse(review);
+
+    if((reviewData['movieId']) !== movieId){
+      continue;
+    }
+
     $reviewList.insertAdjacentHTML(
       "beforeend",
-      getCardHTML(JSON.parse(review), i)
+      getCardHTML(reviewData, i)
     );
     document.querySelector(`#fixbtn${i}`).addEventListener("click", () => {
       showEditPage(i);

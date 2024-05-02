@@ -1,0 +1,49 @@
+.card-wrap {
+  width: 600px;
+  margin: 3px;
+}
+
+#content-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.material-symbols-outlined {
+  font-size: 50px;
+}
+
+.jersey-25-regular {
+  font-family: 'Jersey 25', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.jersey-25-regular-thin {
+  font-family: 'Jersey 25', sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+#pagination-controls {
+  display: flex;
+  justify-content: center;
+}
+
+#pagination-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.page-number-btn {
+  margin: 0 3px;
+  border: 0;
+  background-color: transparent;
+  font-size: 20px;
+}
+
+#pagination-controls > .material-symbols-outlined {
+  font-size: 25px;
+  height: 25px;
+  margin: auto 0;
+}

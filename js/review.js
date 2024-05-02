@@ -27,8 +27,8 @@ const getCardHTML = (review, id) => {
         <p class="namespace">${review["username"]}</p>
         <p class="reviewspace">${review["review"]}</p>
         <div class="cardbtn">
-            <button type="button" id="fixbtn${id}" class="btn btn-outline-secondary" id="fixbtn">수정</button>
-            <button type="button" id="delbtn${id}" class="btn btn-outline-secondary" id="delbtn">삭제</button>
+            <button type="button" id="fixbtn${id}" style="border:0;" class="btn btn-outline-secondary" id="fixbtn">수정</button>
+            <button type="button" id="delbtn${id}" style="border:0;" class="btn btn-outline-secondary" id="delbtn">삭제</button>
         </div>
     </div>
     `;

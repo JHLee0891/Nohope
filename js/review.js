@@ -95,7 +95,6 @@ const getReviewData = () => {
       "beforeend",
       getCardHTML(reviewData, i)
     );
-
     document.querySelector(`#fixbtn${i}`).addEventListener("click", () => {
       showEditPage(i);
     });

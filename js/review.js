@@ -138,6 +138,7 @@ const submitEditReview = () => {
     username: $editusername.value,
     password: $editpassword.value,
     review: $editreview.value,
+    movieId:movieId
   };
 
   //세부 사항 페이지에서 영화 내용을 받아서 하나의 웹페이지에서 보여주는 경우에

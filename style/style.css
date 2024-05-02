@@ -47,3 +47,16 @@
   height: 25px;
   margin: auto 0;
 }
+
+.card-text {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre-wrap;
+  height: 290px;
+}
+
+.star-icon{
+  color: orangered;
+  font-size: 20px;
+}

@@ -4,7 +4,7 @@ class Movie {
         this._title = title;
         this._overview = overview;
         this._poster_path = `https://image.tmdb.org/t/p/w342/${poster_path}`;
-        this._vote_average = vote_average
+        this._vote_average = vote_average.toFixed(1)
     }
 
     getCardHTML = () => {
@@ -16,11 +16,11 @@ class Movie {
                 </div>
                 <div class="col-md-6">
                     <div class="card-body">
-                        <h5 class="card-title jersey-25-regular">${this._title}</h5>
+                        <h5 class="card-title jersey-25-regular" style="font-weight: bold">${this._title}</h5>
                         <p class="card-text jersey-25-regular-thin">${this._overview}</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">${this._vote_average}</li>
+                        <li class="list-group-item" style="font-weight: bold;">평점: <span class="material-symbols-outlined star-icon">star_rate</span>${this._vote_average}</li>
                     </ul>
                 </div>
             </div>
@@ -87,10 +87,10 @@ export const setMovieDetail = (details) => {
         </div>
     </div>
     <div id="movie-detail-wrap">
-        <h3 id="title">${details['title']}</h3>
+        <h3 id="title" style="font-weight: bold;">${details['title']}</h3>
         <div id="vote-wrap">
             <span class="material-symbols-outlined star-icon">star_rate</span>
-            <span id="vote-average">${details['vote_average']}</span>
+            <span id="vote-average" style="font-weight: bold;">${details['vote_average'].toFixed(1)}</span>
         </div>
         <span id="movie-description">개요 : ${details['origin_country'][0]} • ${details['runtime']}</span>
         <p>개봉 : ${details['release_date']}</p>

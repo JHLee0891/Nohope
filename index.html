@@ -35,46 +35,45 @@
         class="container-fluid d-grid gap-3 align-items-center"
         style="grid-template-columns: 1fr 2fr"
       >
-        <span
-          class="d-flex align-items-center col-lg-4 mb-lg-0 link-body-emphasis text-decoration-none"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <span id="movie-logo" class="material-symbols-outlined mousePointer">
-            movie
-          </span>
+        <span id="movie-logo" class="material-symbols-outlined mousePointer">
+          movie
         </span>
 
-        <div class="d-flex align-items-center">
-          <div class="w-100 me-3" role="search">
-            <input
-              type="search"
-              class="form-control jersey-25-regular"
-              placeholder="Search..."
-              aria-label="Search"
-              id="search-input"
-            />
-          </div>
+        <div class="input-group mb-3">
+          <input
+            type="search"
+            class="form-control jersey-25-regular"
+            placeholder="Search..."
+            aria-label="Search"
+            id="search-input"
+          />
+          <button
+            class="btn btn-outline-secondary dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            정렬
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <a class="dropdown-item" href="#" id="votesort-button"
+                >평점 순 정렬</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="#" id="namesort-button"
+                >이름 순 정렬</a
+              >
+            </li>
+          </ul>
+
           <button
             class="btn btn-outline-secondary jersey-25-regular"
             type="button"
             id="search-button"
           >
             Search
-          </button>
-          <button
-            class="btn btn-outline-secondary jersey-25-regular"
-            type="button"
-            id="namesort-button"
-          >
-            이름 정렬
-          </button>
-          <button
-            class="btn btn-outline-secondary jersey-25-regular"
-            type="button"
-            id="votesort-button"
-          >
-            평점 정렬
           </button>
         </div>
       </div>

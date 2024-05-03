@@ -29,6 +29,10 @@
   font-style: normal;
 }
 
+.sort-buttons {
+  width: 30%;
+}
+
 #pagination-controls {
   display: flex;
   justify-content: center;
@@ -60,7 +64,7 @@
   height: 290px;
 }
 
-.star-icon{
+.star-icon {
   color: orangered;
   font-size: 20px;
 }

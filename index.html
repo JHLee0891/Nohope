@@ -35,66 +35,62 @@
         class="container-fluid d-grid gap-3 align-items-center"
         style="grid-template-columns: 1fr 2fr"
       >
-        <span id="movie-logo" class="material-symbols-outlined mousePointer">
-          movie
-        </span>
+        <div>
+          <span id="movie-logo" class="material-symbols-outlined mousePointer">
+            movie
+          </span>
+          <div id="ranking-field"></div>
+        </div>
+        <div class="input-field">
+          <div class="input-group mb-4">
+            <input
+              type="search"
+              class="form-control jersey-25-regular"
+              placeholder="Search..."
+              aria-label="Search"
+              id="search-input"
+            />
+            <button
+              class="btn btn-outline-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              언어
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a class="dropdown-item" id="korean-language-button">한국어</a>
+              </li>
+              <li>
+                <a class="dropdown-item" id="english-language-button">영어</a>
+              </li>
+            </ul>
+            <button
+              class="btn btn-outline-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              정렬
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a class="dropdown-item" id="votesort-button">평점 순 정렬</a>
+              </li>
+              <li>
+                <a class="dropdown-item" id="namesort-button">이름 순 정렬</a>
+              </li>
+            </ul>
 
-        <div class="input-group mb-4">
-          <input
-            type="search"
-            class="form-control jersey-25-regular"
-            placeholder="Search..."
-            aria-label="Search"
-            id="search-input"
-          />
-          <button
-            class="btn btn-outline-secondary dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            언어
-          </button>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li>
-              <a class="dropdown-item" id="korean-language-button"
-                >한국어</a
-              >
-            </li>
-            <li>
-              <a class="dropdown-item" id="english-language-button"
-                >영어</a
-              >
-            </li>
-          </ul>
-          <button
-            class="btn btn-outline-secondary dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            정렬
-          </button>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li>
-              <a class="dropdown-item" id="votesort-button"
-                >평점 순 정렬</a
-              >
-            </li>
-            <li>
-              <a class="dropdown-item" id="namesort-button"
-                >이름 순 정렬</a
-              >
-            </li>
-          </ul>
-
-          <button
-            class="btn btn-outline-secondary jersey-25-regular"
-            type="button"
-            id="search-button"
-          >
-            Search
-          </button>
+            <button
+              class="btn btn-outline-secondary jersey-25-regular"
+              type="button"
+              id="search-button"
+            >
+              Search
+            </button>
+          </div>
         </div>
       </div>
     </header>

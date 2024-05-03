@@ -1,5 +1,6 @@
-import { getTMDBData, setCards } from "./movie.js";
+import { getCOFIXdata, getTMDBData, setCards, setRankings } from "./movie.js";
 
+let rankingDatas = [];
 let movieDatas;
 let totalPage;
 let nextPage;
@@ -9,8 +10,7 @@ let sortType = false;
 
 let params = new URLSearchParams(location.search);
 
-async function getLoadData(pageNumber = 1, info = 'en-US') {
-
+async function getLoadData(pageNumber = 1, info = "en-US") {
   let page = params.get("page");
   if (page !== null) {
     pageNumber = page;
@@ -28,15 +28,22 @@ async function getLoadData(pageNumber = 1, info = 'en-US') {
   totalPage = movieDatas["total_pages"];
   movieDatas = movieDatas["results"];
 
-
   renderPagination(pageNumber);
 
   let sortType = params.get("sortType");
   if (sortType === null) {
-    sortType = 'vote';
+    sortType = "vote";
   }
 
   sort(sortType);
+}
+
+async function getRankingData() {
+  //영화진흥 위원회 박스 오피스
+  rankingDatas = await getCOFIXdata(getDateWeekBefore());
+  rankingDatas = rankingDatas["boxOfficeResult"]["weeklyBoxOfficeList"];
+
+  setRankings(rankingDatas);
 }
 
 const searchMovie = (e) => {
@@ -55,16 +62,16 @@ const searchMovie = (e) => {
 // 정렬방식
 const sort = function (sortType) {
   switch (sortType) {
-    case 'name':
+    case "name":
       nameSort();
       break;
-    case 'vote':
+    case "vote":
       voteSort();
       break;
     default:
       alert("올바르지 않은 정렬방식을 대입했습니다.");
   }
-}
+};
 
 //이름정렬
 const nameSort = function () {
@@ -91,18 +98,17 @@ const voteSort = function () {
 };
 
 //정렬 방식을 주소에 대입
-const initSortType = function(type){
-  params.set("sortType",type);
+const initSortType = function (type) {
+  params.set("sortType", type);
   window.location.search = params;
-}
+};
 
 function currentLanguage() {
   let language = params.get("language");
   if (language !== null) {
     return language;
-  }
-  else {
-    return 'en-US';
+  } else {
+    return "en-US";
   }
 }
 
@@ -110,20 +116,19 @@ function currentLanguage() {
 let set_Language = (language) => {
   let info;
   switch (language) {
-    case 'ko-KR':
-      info = 'ko-KR';
+    case "ko-KR":
+      info = "ko-KR";
       break;
-    case 'en-US':
-      info = 'en-US';
+    case "en-US":
+      info = "en-US";
       break;
     default:
-      alert("지정하지 않은 언어가 들어왔습니다.")
-      info = 'en-US';
+      alert("지정하지 않은 언어가 들어왔습니다.");
+      info = "en-US";
   }
   params.set("language", info);
   window.location.search = params;
-}
-
+};
 
 const renderPagination = (pageNumber) => {
   const pageCount = 10;
@@ -158,42 +163,79 @@ const renderPagination = (pageNumber) => {
   }
 };
 
+const pageGroupChange = (e) => {
+  let page = params.get("page");
+  let pageNumber = 1;
+  if (page !== null) {
+    pageNumber = page;
+  } else pageNumber = 1;
+
+  const pageCount = 10;
+  const pageGroup = Math.ceil(pageNumber / pageCount);
+  let lastPageNumber = pageGroup * pageCount;
+  // 만약 뒷,앞페이지 버튼을 누르면 localStorage의 page값 변경 해주기
+  if (e.target.id === "btn-next") {
+    params.set("page", lastPageNumber + 1);
+    window.location.search = params;
+  } else {
+    params.set("page", lastPageNumber - 19);
+    window.location.search = params;
+  }
+
+  // 페이지의 영화정보 출력하기
+  getLoadData(e.target.id === "btn-next" ? nextPage : prevPage);
+
+  // 홈페이지를 최상단으로 올려주기
+  window.scrollTo(0, 0);
+};
+
 const updatePaginationVisibility = (elementId, visibility) => {
   document.getElementById(elementId).style.visibility = visibility;
 };
 
+const getDateWeekBefore = () => {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month1 = date.getMonth();
+  const day1 = date.getDate();
+
+  const dateData = new Date(year, month1, day1 - 7).toLocaleDateString();
+  const result = dateData.split(". ");
+  result[2] = result[2].slice(0, 2);
+  const data =
+    result[0] + ("0" + result[1]).slice(-2) + ("0" + result[2]).slice(-2);
+  return data;
+};
+
 document.getElementById("search-button").addEventListener("click", searchMovie);
-document.getElementById("namesort-button").addEventListener("click", ()=>{
-  initSortType('name');
-});
-document.getElementById("votesort-button").addEventListener("click", ()=>{
-  initSortType('vote');
+
+document.getElementById("namesort-button").addEventListener("click", () => {
+  initSortType("name");
 });
 
-document.getElementById("korean-language-button").addEventListener("click", () => {
-  set_Language('ko-KR');
+document.getElementById("votesort-button").addEventListener("click", () => {
+  initSortType("vote");
 });
-document.getElementById("english-language-button").addEventListener("click", () => {
-  set_Language('en-US')
-});
+
+document
+  .getElementById("korean-language-button")
+  .addEventListener("click", () => {
+    set_Language("ko-KR");
+  });
+document
+  .getElementById("english-language-button")
+  .addEventListener("click", () => {
+    set_Language("en-US");
+  });
 
 document
   .getElementById("search-input")
   .addEventListener("keypress", searchMovie);
+
 document.querySelectorAll("#pagination-controls > span").forEach((elem) => {
-  elem.addEventListener("click", (e) => {
-
-    // 만약 뒷,앞페이지 버튼을 누르면 localStorage의 page값 변경 해주기
-    if (e.target.id === "btn-next") { localStorage.setItem("page", nextPage) }
-    else { localStorage.setItem("page", prevPage); }
-
-    // 페이지의 영화정보 출력하기
-    getLoadData(e.target.id === "btn-next" ? nextPage : prevPage);
-
-    // 홈페이지를 최상단으로 올려주기
-    window.scrollTo(0, 0);
-  });
+  elem.addEventListener("click", pageGroupChange);
 });
+
 document.getElementById("movie-logo").addEventListener("click", () => {
   window.location.href = `index.html`;
 });
@@ -203,3 +245,4 @@ window.onload = function () {
 };
 
 getLoadData();
+getRankingData();

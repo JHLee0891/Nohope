@@ -1,13 +1,15 @@
-import { getTMDBData, setMovieDetail } from "./movie.js"
+import { getTMDBData, setMovieDetail } from "./movie.js";
 
-let movieId = new URLSearchParams(location.search).get("id")
-let language = new URLSearchParams(location.search).get("language")
-if(language === null){
-    language = 'en-US';
+let movieId = new URLSearchParams(location.search).get("id");
+let language = new URLSearchParams(location.search).get("language");
+if (language === null) {
+  language = "en-US";
 }
-const details = await getTMDBData(`https://api.themoviedb.org/3/movie/${movieId}?language=${language}`)
+const details = await getTMDBData(
+  `https://api.themoviedb.org/3/movie/${movieId}?language=${language}`
+);
 setMovieDetail(details);
 
 document.getElementById("movie-logo").addEventListener("click", () => {
-    window.location.href = `index.html`;
+  window.location.href = `index.html`;
 });

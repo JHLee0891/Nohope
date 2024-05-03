@@ -23,6 +23,7 @@
 
 #pagination-controls {
   display: flex;
+  margin-bottom : 20px;
   justify-content: center;
 }
 
@@ -55,4 +56,8 @@
 .star-icon {
   color: orangered;
   font-size: 20px;
+}
+
+#movie-logo {
+  width: 10px;
 }

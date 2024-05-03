@@ -131,4 +131,8 @@ window.onload = function () {
   document.getElementById("search-input").focus();
 };
 
+document.getElementById("movie-logo").addEventListener("click", () => {
+  window.location.href = `index.html`;
+});
+
 getLoadData();

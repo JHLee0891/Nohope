@@ -70,7 +70,6 @@ export const setCards = (movieDatas) => {
 
         cardHTML.addEventListener('click', () => {
             movie.getClickEvent();
-            
         })
 
         cardWrappers.appendChild(cardHTML);

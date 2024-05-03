@@ -1,7 +1,11 @@
 import { getTMDBData, setMovieDetail } from "./movie.js"
 
 let movieId = new URLSearchParams(location.search).get("id")
-const details = await getTMDBData(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`)
+let language = new URLSearchParams(location.search).get("language")
+if(language === null){
+    language = 'en-US';
+}
+const details = await getTMDBData(`https://api.themoviedb.org/3/movie/${movieId}?language=${language}`)
 setMovieDetail(details);
 
 document.getElementById("movie-logo").addEventListener("click", () => {

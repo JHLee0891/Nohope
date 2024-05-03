@@ -1,10 +1,11 @@
 class Movie {
-    constructor(id, title, overview, poster_path, vote_average) {
+    constructor(id, title, overview, poster_path, vote_average,language = 'en-US') {
         this._id = id
         this._title = title;
         this._overview = overview;
         this._poster_path = `https://image.tmdb.org/t/p/w342/${poster_path}`;
         this._vote_average = vote_average.toFixed(1)
+        this._language = language;
     }
 
     getCardHTML = () => {
@@ -29,7 +30,7 @@ class Movie {
     }
 
     getClickEvent = () => {
-        window.location.href = `detail.html?id=${this._id}`;
+        window.location.href = `detail.html?id=${this._id}&language=${this._language}`;
     }
 }
 
@@ -50,7 +51,7 @@ export async function getTMDBData(url) {
     return response.json()
 }
 
-export const setCards = (movieDatas) => {
+export const setCards = (movieDatas,language = 'en-US') => {
     const cardWrappers = document.getElementById("content-wrap");
     cardWrappers.innerHTML = "";
 
@@ -60,7 +61,8 @@ export const setCards = (movieDatas) => {
             elem.title,
             elem.overview,
             elem.poster_path,
-            elem.vote_average
+            elem.vote_average,
+            language
         );
 
         const cardHTML = document.createElement('div')

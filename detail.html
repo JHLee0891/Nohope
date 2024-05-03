@@ -39,7 +39,7 @@
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-        <span id="movie-logo" class="material-symbols-outlined mousePointer"> movie </span>
+        <span id="movie-logo" class="material-symbols-outlined mouse-pointer"> movie </span>
         </span>
       </div>
     </header>
@@ -84,18 +84,19 @@
           <div id="review-list"></div>
         </div>
     
-        <div class="reviewEdit" id="reviewEdit">
-          <div class="reviewWindow">
+        <div class="review-edit" id="review-edit">
+          <input type="hidden" id="review-edit-index">
+          <div class="review-window">
             <div class="input-group">
               <input
-                id="editusername"
+                id="edit-username"
                 type="text"
                 aria-label="First name"
                 placeholder="Username"
                 class="form-control"
               />
               <input
-                id="editpassword"
+                id="edit-password"
                 type="text"
                 aria-label="Last name"
                 placeholder="Password"
@@ -105,36 +106,32 @@
     
             <div class="input-group">
               <textarea
-                id="editreview"
+                id="edit-review"
                 class="form-control"
                 placeholder="Review"
                 aria-label="With textarea"
               ></textarea>
             </div>
             <div class="input-edit-group">
-              <button id="editsubmit" type="button" class="btn btn-dark">
+              <button id="edit" type="button" class="btn btn-dark">
                 저장
               </button>
-              <button
-                id="editclose"
-                type="button"
-                class="btn btn-outline-secondary"
-              >
+              <button id="edit-cancle" type="button" class="btn btn-outline-secondary">
                 닫기
               </button>
             </div>
           </div>
         </div>
     
-        <div class="reviewdelete" id="reviewdelete">
-          <div class="reviewDeleteWindow">
+        <div class="review-delete" id="review-delete">
+          <input type="hidden" id="review-delete-index">
+          <div class="review-delete-window">
             <div class="input-group">
-              <p class="deletetext">
+              <p class="delete-text">
                 리뷰를 지우시려면 비밀번호를 입력하셔야 합니다.
               </p>
-    
               <input
-                id="deletepassword"
+                id="delete-password"
                 type="text"
                 aria-label="Last name"
                 placeholder="Password"
@@ -144,7 +141,7 @@
             <div class="input-edit-group">
               <button id="delete" type="button" class="btn btn-dark">삭제</button>
               <button
-                id="deleteCancle"
+                id="delete-cancle"
                 type="button"
                 class="btn btn-outline-secondary"
               >
@@ -153,8 +150,6 @@
             </div>
           </div>
         </div>
-    
-    <script src="./js/review.js"></script>
-    <script type="module" src="./js/detail.js"></script>
+    <script type="module" src="./src/detail.js"></script>
   </body>
 </html>

@@ -7,7 +7,7 @@
   background-color: white;
 }
 
-.reviewdata {
+.review-data {
   margin-top: 10px;
   margin-bottom: 10px;
   padding-left: 30px;
@@ -17,7 +17,7 @@
   line-height: 20px;
 }
 
-.cardbtn {
+.card-btn {
   margin-top: 15px;
 }
 
@@ -30,10 +30,7 @@
   font-weight: 600;
 }
 
-.reviewspace {
-}
-
-.reviewEdit {
+.review-edit {
   display: none;
   position: fixed;
   top: 0;
@@ -44,7 +41,7 @@
   z-index: 1;
 }
 
-.reviewWindow {
+.review-window {
   position: fixed;
   top: 50%;
   right: 50%;
@@ -55,7 +52,7 @@
   padding: 1% 1% 1% 1%;
 }
 
-.reviewdelete {
+.review-delete {
   display: none;
   position: fixed;
   top: 0;
@@ -66,7 +63,7 @@
   z-index: 1;
 }
 
-.reviewDeleteWindow {
+.review-delete-window {
   position: fixed;
   top: 50%;
   right: 50%;
@@ -81,7 +78,7 @@
   margin-top: 10px;
 }
 
-.deletetext {
+.delete-text {
   margin-bottom: 5px;
   width: 100%;
 }

@@ -27,8 +27,14 @@
 
 <img src ="https://github.com/JHLee0891/ToHard-Make-Team-Name/assets/68465436/7cfffda0-e74c-4151-91bf-31d4f603ff87">
 
+#### [3] 검색 기능
+- Title Name 검색<br>
+<img src ="https://github.com/JHLee0891/ToHard-Make-Team-Name/assets/68465436/fa37c7db-014e-426c-ac62-af30b4000f5e">
+- Type (평점, 리뷰 순) 검색<br>
+<img src ="https://github.com/JHLee0891/ToHard-Make-Team-Name/assets/68465436/a0d94a98-3e58-42d5-b14e-77cd374985de">
+
 <br><br>
-#### [3] 상세 페이지 영화 리뷰 작성 기능 구현
+#### [4] 상세 페이지 영화 리뷰 작성 기능 구현
 
 - 임의의 Card 선택 시, 해당 Card의 상세 페이지 이동
 <br><br>
@@ -36,7 +42,7 @@
 <img src ="https://github.com/JHLee0891/ToHard-Make-Team-Name/assets/68465436/11660e41-58df-4d93-8d60-0a5e8277a4ef">
 <br><br>
 
-#### [4] UX를 고려한 validation check 
+#### [5] UX를 고려한 validation check 
 
 - Validation Check 필요한 부분 확인 (댓글기능 Alert 팝업)<br><br>
 예시)
@@ -65,9 +71,15 @@
 1-1. 비밀번호 일치 시<br>
 1-2. 비밀번호 칸이 공백일 경우<br>
 
+<br>
 
-<br><br>
-#### [5] 하기 기재된 Javascript 문법 요소를 이용하여 구현
+#### [6]  상단 Home Btn 기능 추가
+- Logo 클릭 시 첫 페이지로 이동<br>
+<img src="https://github.com/JHLee0891/ToHard-Make-Team-Name/assets/68465436/214dd106-9330-4e0e-8aac-37e0ed4be426">
+
+
+
+#### [7]  Javascript 문법 요소를 이용하여 구현
 - 사이트 참조
 <br>
 <br>

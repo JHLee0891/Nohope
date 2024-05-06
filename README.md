@@ -26,6 +26,7 @@
 - 위 API를 사용하여 Result를 불러와 정보를 가공, Card로 출력<br><br>
 
 <img src ="https://github.com/JHLee0891/ToHard-Make-Team-Name/assets/68465436/7cfffda0-e74c-4151-91bf-31d4f603ff87">
+<br><br>
 
 #### [3] 검색 기능
 - Title Name 검색<br>

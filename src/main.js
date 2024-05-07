@@ -1,6 +1,9 @@
 import { fetchMovieData } from "./movie/movie.js";
 import { addSearchEvent } from "./search/search.js";
 import { addSortEvent } from "./sort/sort.js";
+import { getLangFromUrl,setParamToUrl } from "./common.js";
+import { addLangEvent } from "./setLang/setLang.js";
+import { getRankingData } from "./movie/ranking.js";
 
 let totalPage;
 let nextPage;
@@ -32,50 +35,49 @@ const renderPagination = (pageNumber) => {
     const pageHTML = document.createElement("div");
     pageHTML.innerHTML = `<button class="page-number-btn" id="page-${i}">${i}</button>`;
     pageHTML.addEventListener("click", (e) => {
-      history.pushState({},'',`index.html?page=${i}`);
+      setParamToUrl("page",i);
       getLoadData(e.target.textContent);
     });
     paginationList.appendChild(pageHTML);
   }
+
+  // 페이지 앞,뒷 화살표에 기능 추가하기
+  document.querySelectorAll("#pagination-controls > span").forEach((elem) => {
+    elem.addEventListener("click", (e) => {
+  
+      // 만약 뒷,앞페이지 버튼을 누르면 localStorage의 page값 변경 해주기
+      if(e.target.id === "btn-next")
+      {setParamToUrl("page",nextPage);}
+      else
+      {setParamToUrl("page",prevPage);}
+    });
+  });
 };
 
 
 const getLoadData = async (pageNumber = 1) => {
-  let page = new URLSearchParams(location.search).get("page");
-  if(page !== null) pageNumber = page
+  const page = new URLSearchParams(location.search).get("page");
+  if(page !== null) pageNumber = page;
+  
+  const lang = getLangFromUrl();
 
   //Top Rated API
-  let movieDatas = await fetchMovieData(
-    `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${pageNumber}`
+  const fetchDatas = await fetchMovieData(
+    `https://api.themoviedb.org/3/movie/top_rated?language=${lang}&page=${pageNumber}`
   );
-  totalPage = movieDatas["total_pages"];
-  movieDatas = movieDatas["results"];
+  totalPage = fetchDatas["total_pages"];
+  const movieDatas = fetchDatas["results"];
 
-  await renderPagination(pageNumber);
-  await addPageEvent();
+  renderPagination(pageNumber);
 
+  addLangEvent();
   addSearchEvent(movieDatas);
-  addSortEvent(false, movieDatas);
+  addSortEvent(movieDatas);
 }
 
 const updatePaginationVisibility = (elementId, visibility) => {
   document.getElementById(elementId).style.visibility = visibility;
 };
-
-const addPageEvent = () => {
-  document.querySelectorAll("#pagination-controls > span").forEach((elem) => {
-    elem.addEventListener("click", (e) => {
-
-      const pageNumber = e.target.id === "btn-next" ? nextPage : prevPage;
-      history.pushState({},'',`index.html?page=${pageNumber}`);
-      getLoadData(pageNumber);
-  
-      // 홈페이지를 최상단으로 올려주기
-      window.scrollTo(0,0);
-    });
-  });
-}
-
 
 window.onload = function () {
   document.getElementById("search-input").focus();
@@ -86,3 +88,4 @@ document.getElementById("movie-logo").addEventListener("click", () => {
 });
 
 getLoadData();
+getRankingData();

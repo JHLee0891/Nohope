@@ -1,3 +1,6 @@
+body {
+    position: relative;
+}
 #content {
   display: flex;
   flex-direction: column;
@@ -46,4 +49,32 @@
 
 #vote-wrap > span {
   font-size: 20px;
+}
+
+#recentMovie {
+    position: fixed;
+    width: 15%;
+    height: 60%;
+    right: 0;
+    margin-right: 50px;
+    top: 20%;
+    background-color: aqua;
+    overflow-y:scroll;
+
+}
+
+#recentMovie::-webkit-scrollbar {
+    display: none;
+
+}
+
+
+#recentMovie::-webkit-scrollbar-button {
+    display: none;
+}
+
+.recent-movie-img {
+    width: 75%;
+    height: 75%;
+    margin: 10px auto;
 }

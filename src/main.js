@@ -6,7 +6,7 @@ let totalPage;
 let nextPage;
 let prevPage;
 
-const renderPagination = (pageNumber, nextPage, prevPage, totalPage) => {
+const renderPagination = (pageNumber) => {
   const pageCount = 10;
   const pageGroup = Math.ceil(pageNumber / pageCount);
   let lastPageNumber = pageGroup * pageCount;
@@ -32,7 +32,7 @@ const renderPagination = (pageNumber, nextPage, prevPage, totalPage) => {
     const pageHTML = document.createElement("div");
     pageHTML.innerHTML = `<button class="page-number-btn" id="page-${i}">${i}</button>`;
     pageHTML.addEventListener("click", (e) => {
-      window.location.href = `index.html?page=${i}`;
+      history.pushState({},'',`index.html?page=${i}`);
       getLoadData(e.target.textContent);
     });
     paginationList.appendChild(pageHTML);
@@ -42,9 +42,7 @@ const renderPagination = (pageNumber, nextPage, prevPage, totalPage) => {
 
 const getLoadData = async (pageNumber = 1) => {
   let page = new URLSearchParams(location.search).get("page");
-  if(page !== null){
-    pageNumber = page;
-  }
+  if(page !== null) pageNumber = page
 
   //Top Rated API
   let movieDatas = await fetchMovieData(
@@ -53,7 +51,8 @@ const getLoadData = async (pageNumber = 1) => {
   totalPage = movieDatas["total_pages"];
   movieDatas = movieDatas["results"];
 
-  renderPagination(pageNumber);
+  await renderPagination(pageNumber);
+  await addPageEvent();
 
   addSearchEvent(movieDatas);
   addSortEvent(false, movieDatas);
@@ -63,22 +62,20 @@ const updatePaginationVisibility = (elementId, visibility) => {
   document.getElementById(elementId).style.visibility = visibility;
 };
 
-document.querySelectorAll("#pagination-controls > span").forEach((elem) => {
-  elem.addEventListener("click", (e) => {
+const addPageEvent = () => {
+  document.querySelectorAll("#pagination-controls > span").forEach((elem) => {
+    elem.addEventListener("click", (e) => {
 
-    // 만약 뒷,앞페이지 버튼을 누르면 localStorage의 page값 변경 해주기
-    if(e.target.id === "btn-next")
-    {localStorage.setItem("page",nextPage)}
-    else
-    {localStorage.setItem("page",prevPage);}
-
-    // 페이지의 영화정보 출력하기
-    getLoadData(e.target.id === "btn-next" ? nextPage : prevPage);
-
-    // 홈페이지를 최상단으로 올려주기
-    window.scrollTo(0,0);
+      const pageNumber = e.target.id === "btn-next" ? nextPage : prevPage;
+      history.pushState({},'',`index.html?page=${pageNumber}`);
+      getLoadData(pageNumber);
+  
+      // 홈페이지를 최상단으로 올려주기
+      window.scrollTo(0,0);
+    });
   });
-});
+}
+
 
 window.onload = function () {
   document.getElementById("search-input").focus();

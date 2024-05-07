@@ -40,6 +40,18 @@ const renderPagination = (pageNumber, nextPage, prevPage, totalPage) => {
     });
     paginationList.appendChild(pageHTML);
   }
+
+  // 페이지 앞,뒷 화살표에 기능 추가하기
+  document.querySelectorAll("#pagination-controls > span").forEach((elem) => {
+    elem.addEventListener("click", (e) => {
+  
+      // 만약 뒷,앞페이지 버튼을 누르면 localStorage의 page값 변경 해주기
+      if(e.target.id === "btn-next")
+      {window.location.href = `index.html?page=${nextPage}`;}
+      else
+      {window.location.href = `index.html?page=${prevPage}`;}
+    });
+  });
 };
 
 
@@ -67,23 +79,6 @@ const getLoadData = async (pageNumber = 1) => {
 const updatePaginationVisibility = (elementId, visibility) => {
   document.getElementById(elementId).style.visibility = visibility;
 };
-
-document.querySelectorAll("#pagination-controls > span").forEach((elem) => {
-  elem.addEventListener("click", (e) => {
-
-    // 만약 뒷,앞페이지 버튼을 누르면 localStorage의 page값 변경 해주기
-    if(e.target.id === "btn-next")
-    {localStorage.setItem("page",nextPage)}
-    else
-    {localStorage.setItem("page",prevPage);}
-
-    // 페이지의 영화정보 출력하기
-    getLoadData(e.target.id === "btn-next" ? nextPage : prevPage);
-
-    // 홈페이지를 최상단으로 올려주기
-    window.scrollTo(0,0);
-  });
-});
 
 window.onload = function () {
   document.getElementById("search-input").focus();

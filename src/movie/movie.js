@@ -1,4 +1,5 @@
 import {getBaseUrl} from "../common.js"
+import { getLangFromUrl } from "../common.js";
 
 class Movie {
   constructor(id, title, overview, poster_path, vote_average) {
@@ -31,7 +32,7 @@ class Movie {
   };
 
   getClickEvent = () => {
-    window.location.href = `detail.html?id=${this._id}`;
+    window.location.href = `detail.html?id=${this._id}&language=${getLangFromUrl()}`;
   };
 }
 
@@ -63,7 +64,7 @@ export const setCards = (movieDatas) => {
       elem.title,
       elem.overview,
       elem.poster_path,
-      elem.vote_average
+      elem.vote_average,
     );
 
     const cardHTML = document.createElement("div");

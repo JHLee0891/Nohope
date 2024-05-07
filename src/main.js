@@ -1,6 +1,8 @@
 import { fetchMovieData } from "./movie/movie.js";
 import { addSearchEvent } from "./search/search.js";
 import { addSortEvent } from "./sort/sort.js";
+import { getLangFromUrl } from "./common.js";
+import { addLangEvent } from "./setLang/setLang.js";
 
 let totalPage;
 let nextPage;
@@ -45,18 +47,20 @@ const getLoadData = async (pageNumber = 1) => {
   if(page !== null){
     pageNumber = page;
   }
+  let lang = getLangFromUrl();
 
   //Top Rated API
   let movieDatas = await fetchMovieData(
-    `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${pageNumber}`
+    `https://api.themoviedb.org/3/movie/top_rated?language=${lang}&page=${pageNumber}`
   );
   totalPage = movieDatas["total_pages"];
   movieDatas = movieDatas["results"];
 
   renderPagination(pageNumber);
 
+  addLangEvent();
   addSearchEvent(movieDatas);
-  addSortEvent(false, movieDatas);
+  addSortEvent(movieDatas);
 }
 
 const updatePaginationVisibility = (elementId, visibility) => {

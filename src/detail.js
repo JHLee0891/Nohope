@@ -1,9 +1,9 @@
-import { getIdFromUrl } from "./common.js";
+import { getIdFromUrl,getLangFromUrl } from "./common.js";
 import { fetchMovieData, setMovieDetail } from "./movie/movie.js";
 import { getReviewData } from "./review/review.js";
 
 const details = await fetchMovieData(
-  `https://api.themoviedb.org/3/movie/${getIdFromUrl()}?language=en-US`
+  `https://api.themoviedb.org/3/movie/${getIdFromUrl()}?language=${getLangFromUrl()}`
 );
 
 const getLoadData = async () => {

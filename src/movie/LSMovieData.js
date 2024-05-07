@@ -49,7 +49,7 @@ export class LSMovieData {
         const recentlist = document.querySelector("#recent-list");
         
         for(let i = 0; i < data.length; i++){
-            console.log(data[i]);
+            
             const recentImg = `
             <img id="recent-movie-img${i}" class="recent-movie-img" src="https://image.tmdb.org/t/p/w342//${data[i]['data'][0]}" alt="">
             `;

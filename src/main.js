@@ -3,6 +3,7 @@ import { addSearchEvent } from "./search/search.js";
 import { addSortEvent } from "./sort/sort.js";
 import { getLangFromUrl } from "./common.js";
 import { addLangEvent } from "./setLang/setLang.js";
+import { getRankingData } from "./movie/ranking.js";
 
 let totalPage;
 let nextPage;
@@ -93,3 +94,4 @@ document.getElementById("movie-logo").addEventListener("click", () => {
 });
 
 getLoadData();
+getRankingData();

@@ -61,3 +61,7 @@
 #movie-logo {
   width: 10px;
 }
+
+#ranking-field{
+  float : right;
+}

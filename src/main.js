@@ -1,7 +1,7 @@
 import { fetchMovieData } from "./movie/movie.js";
 import { addSearchEvent } from "./search/search.js";
 import { addSortEvent } from "./sort/sort.js";
-import { getLangFromUrl } from "./common.js";
+import { getLangFromUrl,setParamToUrl } from "./common.js";
 import { addLangEvent } from "./setLang/setLang.js";
 import { getRankingData } from "./movie/ranking.js";
 
@@ -35,7 +35,7 @@ const renderPagination = (pageNumber, nextPage, prevPage, totalPage) => {
     const pageHTML = document.createElement("div");
     pageHTML.innerHTML = `<button class="page-number-btn" id="page-${i}">${i}</button>`;
     pageHTML.addEventListener("click", (e) => {
-      window.location.href = `index.html?page=${i}`;
+      setParamToUrl("page",i);
       getLoadData(e.target.textContent);
     });
     paginationList.appendChild(pageHTML);
@@ -47,9 +47,9 @@ const renderPagination = (pageNumber, nextPage, prevPage, totalPage) => {
   
       // 만약 뒷,앞페이지 버튼을 누르면 localStorage의 page값 변경 해주기
       if(e.target.id === "btn-next")
-      {window.location.href = `index.html?page=${nextPage}`;}
+      {setParamToUrl("page",nextPage);}
       else
-      {window.location.href = `index.html?page=${prevPage}`;}
+      {setParamToUrl("page",prevPage);}
     });
   });
 };

@@ -12,6 +12,7 @@ const getLoadData = async () => {
   recents.insertData(Number(getIdFromUrl()),details["poster_path"]);
   await setMovieDetail(details);
   await getReviewData();
+  recents.getRecentData();
 }
 
 document.getElementById("movie-logo").addEventListener("click", () => {

@@ -44,18 +44,18 @@ const renderPagination = (pageNumber, nextPage, prevPage, totalPage) => {
 
 
 const getLoadData = async (pageNumber = 1) => {
-  let page = new URLSearchParams(location.search).get("page");
+  const page = new URLSearchParams(location.search).get("page");
   if(page !== null){
     pageNumber = page;
   }
-  let lang = getLangFromUrl();
+  const lang = getLangFromUrl();
 
   //Top Rated API
-  let movieDatas = await fetchMovieData(
+  const fetchDatas = await fetchMovieData(
     `https://api.themoviedb.org/3/movie/top_rated?language=${lang}&page=${pageNumber}`
   );
-  totalPage = movieDatas["total_pages"];
-  movieDatas = movieDatas["results"];
+  totalPage = fetchDatas["total_pages"];
+  const movieDatas = fetchDatas["results"];
 
   renderPagination(pageNumber);
 

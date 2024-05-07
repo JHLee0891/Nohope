@@ -9,7 +9,7 @@ let totalPage;
 let nextPage;
 let prevPage;
 
-const renderPagination = (pageNumber, nextPage, prevPage, totalPage) => {
+const renderPagination = (pageNumber) => {
   const pageCount = 10;
   const pageGroup = Math.ceil(pageNumber / pageCount);
   let lastPageNumber = pageGroup * pageCount;
@@ -57,9 +57,8 @@ const renderPagination = (pageNumber, nextPage, prevPage, totalPage) => {
 
 const getLoadData = async (pageNumber = 1) => {
   const page = new URLSearchParams(location.search).get("page");
-  if(page !== null){
-    pageNumber = page;
-  }
+  if(page !== null) pageNumber = page;
+  
   const lang = getLangFromUrl();
 
   //Top Rated API

@@ -56,7 +56,6 @@ const submitReview = () => {
   if (isEmpty($username.value)) {
     return alert("이름이 입력되지 않았습니다.");
   }
-
   // 비밀번호 유효성
   if (isEmpty($password.value)) {
     return alert("비밀번호가 입력되지 않았습니다.");
@@ -118,17 +117,14 @@ const closeDeleteModal = () => {
 const updateReview = () => {
   let reviewArr = getReviewsFromLocalStorage();
   const index = $reviewEditIndex.value;
-
-  if (isNotEqual($editPassword.value, reviewArr[index]["password"])) {
-    return alert("비밀번호가 일치하지 않습니다.");
-  }
-
-  if (isEmpty($editUserName)) {
+  if (isEmpty($editUserName.value)) {
     return alert("이름이 입력되지 않았습니다.");
   }
-
   if (isEmpty($editReview.value)) {
     return alert("리뷰가 입력되지 않았습니다.");
+  }
+  if (isNotEqual($editPassword.value, reviewArr[index]["password"])) {
+    return alert("비밀번호가 일치하지 않습니다.");
   }
 
   const editData = {

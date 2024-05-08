@@ -1,8 +1,8 @@
 // getRankingData로 부터 데이터를 받아와 HTML에 적용하는 함수
 export const setRankings = (movieDatas) => {
-    const detailContent = document.querySelector("#ranking-field");
+  const detailContent = document.querySelector("#ranking-field");
 
-    detailContent.innerHTML = `
+  detailContent.innerHTML = `
     <span
     id="boxoffice-logo"
     class="material-symbols-outlined mousePointer"
@@ -29,37 +29,37 @@ export const setRankings = (movieDatas) => {
 
 // 박스 오피스에서 데이터를 들고오는 함수
 export async function getCOFIXdata(Date) {
-    const response = await fetch(
-        `http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=9020bc1dc0bdfb94ebf50e3945318630&weekGb=0&targetDt=${Date}`
-    );
+  const response = await fetch(
+    `http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=9020bc1dc0bdfb94ebf50e3945318630&weekGb=0&targetDt=${Date}`
+  );
 
-    if (!response.ok) {
-        throw new Error("HTTP status " + response.status);
-    }
+  if (!response.ok) {
+    throw new Error("HTTP status " + response.status);
+  }
 
-    return response.json();
+  return response.json();
 }
 
 // 박스오피스 api에서 데이터를 긁어와 필요한 데이터로 수정하여 저장후 SetRankings 함수 작동
 export async function getRankingData() {
-    //영화진흥 위원회 박스 오피스
-    let rankingDatas = await getCOFIXdata(getDateWeekBefore());
-    rankingDatas = rankingDatas["boxOfficeResult"]["weeklyBoxOfficeList"];
+  //영화진흥 위원회 박스 오피스
+  let rankingDatas = await getCOFIXdata(getDateWeekBefore());
+  rankingDatas = rankingDatas["boxOfficeResult"]["weeklyBoxOfficeList"];
 
-    setRankings(rankingDatas);
+  setRankings(rankingDatas);
 }
 
 // 날짜 지정하는 함수
 const getDateWeekBefore = () => {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month1 = date.getMonth();
-    const day1 = date.getDate();
+  const date = new Date();
+  const year = date.getFullYear();
+  const month1 = date.getMonth();
+  const day1 = date.getDate();
 
-    const dateData = new Date(year, month1, day1 - 7).toLocaleDateString();
-    const result = dateData.split(". ");
-    result[2] = result[2].slice(0, 2);
-    const data =
-        result[0] + ("0" + result[1]).slice(-2) + ("0" + result[2]).slice(-2);
-    return data;
+  const dateData = new Date(year, month1, day1 - 7).toLocaleDateString();
+  const result = dateData.split(". ");
+  result[2] = result[2].slice(0, -1);
+  const data =
+    result[0] + ("0" + result[1]).slice(-2) + ("0" + result[2]).slice(-2);
+  return data;
 };

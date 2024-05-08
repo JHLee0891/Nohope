@@ -89,12 +89,4 @@ export const setMovieDetail = (details) => {
       </div>
       `;
   
-      const favorite = document.querySelector('#favorite-logo');
-      favorite.addEventListener('click', ()=>{
-          if( favorite.innerHTML === "favorite"){
-              favorite.innerHTML = "heart_check";
-          } else {
-              favorite.innerHTML = "favorite";
-          }
-      });
 };

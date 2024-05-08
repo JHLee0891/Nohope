@@ -1,4 +1,5 @@
-import { getLangFromUrl } from "../common.js"; 
+import { getLangFromUrl, getParamFromUrl, setParamToUrl } from "../common.js";
+import { setCards } from "./movie.js";
 
 // LocalStorage 에 저장할 MovieData를 정형화
 export class LSMovieData {
@@ -30,7 +31,7 @@ export class LSMovieData {
             data:data,
         };
         if (!this._movieData.find((element) => element.id === id)) {
-            if (this._movieData.length >= 5) {
+            if (this._movieData.length >= 5 && this._itemType === "recents") {
                 this._movieData.shift();
             }
             this._movieData.push(datas);
@@ -59,7 +60,18 @@ export class LSMovieData {
                 window.location.href = `detail.html?id=${data[i]['id']}&language=${getLangFromUrl()}`
             });
         }
+    }
 
-        
+    getFavoriteData = () => {
+        const data = JSON.parse(localStorage.getItem("favorite"));
+        data.forEach(element => {
+            
+            if( element['id'] === Number(getParamFromUrl("id"))){
+                const favoriteLogo = document.querySelector("#favorite-logo");
+                favoriteLogo.innerHTML = 'heart_check';
+                return false;
+            }
+
+        });
     }
 }

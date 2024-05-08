@@ -14,6 +14,7 @@ export const getSortTypeFromUrl = () => {
 
 export const setParamToUrl = (key,value) =>{
   const url = new URLSearchParams(location.search);
+  url.set("likes", false);
   url.set(key,value);
   window.location.search = url;
 }

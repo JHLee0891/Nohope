@@ -64,27 +64,37 @@ export const setCards = (movieDatas) => {
 };
 
 export const setMovieDetail = (details) => {
-  const detailContent = document.querySelector("#detail-content");
-
-  detailContent.innerHTML = `
-    <div id="movie-poster-wrap">
-        <div>
-            <img id="poster-image" src=${getBaseUrl() + details["poster_path"]}>
-        </div>
-    </div>
-    <div id="movie-detail-wrap">
-        <h3 id="title" style="font-weight: bold;">${details["title"]}</h3>
-        <div id="vote-wrap">
-            <span class="material-symbols-outlined star-icon">star_rate</span>
-            <span id="vote-average" style="font-weight: bold;">
-                ${details["vote_average"].toFixed(1)}
-            </span>
-        </div>
-        <span id="movie-description">
-            개요 : ${details["origin_country"][0]} • ${details["runtime"]}
-        </span>
-        <p>개봉 : ${details["release_date"]}</p>
-        <p id="overview">${details["overview"]}</p>
-    </div>
-    `;
+    const detailContent = document.querySelector("#detail-content");
+    detailContent.innerHTML = `
+      <div id="movie-poster-wrap">
+          <div>
+              <img id="poster-image" src=${getBaseUrl() + details["poster_path"]}>
+          </div>
+      </div>
+      <div id="movie-detail-wrap">
+          <h3 id="title" style="font-weight: bold;">${details["title"]}</h3>
+          <span id="favorite-logo" class="material-symbols-outlined mouse-pointer"> favorite </span>
+          </span>
+          <div id="vote-wrap">
+              <span class="material-symbols-outlined star-icon">star_rate</span>
+              <span id="vote-average" style="font-weight: bold;">
+                  ${details["vote_average"].toFixed(1)}
+              </span>
+          </div>
+          <span id="movie-description">
+              개요 : ${details["origin_country"][0]} • ${details["runtime"]}
+          </span>
+          <p>개봉 : ${details["release_date"]}</p>
+          <p id="overview">${details["overview"]}</p>
+      </div>
+      `;
+  
+      const favorite = document.querySelector('#favorite-logo');
+      favorite.addEventListener('click', ()=>{
+          if( favorite.innerHTML === "favorite"){
+              favorite.innerHTML = "heart_check";
+          } else {
+              favorite.innerHTML = "favorite";
+          }
+      });
 };

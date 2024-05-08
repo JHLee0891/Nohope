@@ -1,16 +1,15 @@
-import { setCards } from "../movie/movie.js";
+import { getLoadData } from "../fetchAPI.js";
+import { setParamToUrl,removeAllUrlParams } from "../common.js";
 
-export const addSearchEvent = (movieDatas) => {
+export const addSearchEvent = () => {
   const searchMovie = (e) => {
     if (e.type === "click" || (e.type === "keypress" && e.key === "Enter")) {
       const searchInputValue = document.getElementById("search-input").value;
+      const searchQuery = searchInputValue.trim();
 
-      setCards(
-        movieDatas.filter((movie) => {
-          const movieTitle = movie["title"].toLowerCase();
-          return movieTitle.includes(searchInputValue.toLowerCase());
-        })
-      );
+      removeAllUrlParams();
+      setParamToUrl("search", searchQuery);
+      getLoadData();
     }
   };
 

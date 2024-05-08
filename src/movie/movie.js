@@ -36,28 +36,11 @@ class Movie {
   };
 }
 
-export const fetchMovieData = async (url) => {
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YzhkYWIyMDlkN2FiNjQ2MjBkNWY3NjM0YTk2Y2Y4ZSIsInN1YiI6IjY2MmEyY2FlMWQ3OGYyMDExZTJmZWZhYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.F_228f-CVuuIOTCRJnkPvqxS1a_1vM1ikZ_tHzTXTM4",
-    },
-  };
-
-  let response = await fetch(url, options);
-  if (!response.ok) {
-    throw new Error("HTTP status " + response.status);
-  }
-
-  return response.json();
-};
-
 export const setCards = (movieDatas) => {
   const cardWrappers = document.getElementById("content-wrap");
   cardWrappers.innerHTML = "";
 
+  if(movieDatas.length === 0 ) cardWrappers.innerHTML = `<div id="no-search-results">검색 결과가 없습니다. 다른 검색어를 시도해 주세요</div>`
   movieDatas.forEach((elem) => {
     const movie = new Movie(
       elem.id,

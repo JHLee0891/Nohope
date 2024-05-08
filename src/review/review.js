@@ -1,6 +1,6 @@
-import { getIdFromUrl } from "../common.js";
+import { getParamFromUrl,isEmpty } from "../common.js";
 
-const movieId = getIdFromUrl();
+const movieId = getParamFromUrl("id");
 
 const $reviewEdit = document.querySelector("#review-edit");
 const $reviewEditIndex = document.querySelector("#review-edit-index");
@@ -11,12 +11,6 @@ const $editReview = document.querySelector("#edit-review");
 const $reviewDelete = document.querySelector("#review-delete");
 const $reviewDeleteIndex = document.querySelector("#review-delete-index");
 const $deletePassword = document.querySelector("#delete-password");
-
-const isEmpty = (value) => {
-  return (
-    value === "" || value === null || value === undefined || /^\s*$/.test(value)
-  );
-};
 
 const isNotNumber = (value) => {
   return !/^[0-9]*$/.test(value);

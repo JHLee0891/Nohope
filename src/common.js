@@ -1,5 +1,5 @@
-export const getIdFromUrl = () => {
-  return new URLSearchParams(location.search).get("id");
+export const getParamFromUrl = (param) => {
+  return new URLSearchParams(location.search).get(param);
 };
 
 export const getLangFromUrl = () =>{
@@ -18,6 +18,18 @@ export const setParamToUrl = (key,value) =>{
   window.location.search = url;
 }
 
+export const removeAllUrlParams = () => {
+  history.replaceState({}, null, location.pathname);
+}
+
 export const getBaseUrl = () => {
   return "https://image.tmdb.org/t/p/w342/";
 };
+
+export const isEmpty = (value) => {
+  return (
+    value === "" || value === null || value === undefined || /^\s*$/.test(value)
+  );
+};
+
+

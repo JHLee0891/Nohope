@@ -70,3 +70,20 @@
   font-size: 16px;
   margin: 10% auto;
 }
+
+.page-number-btn:active,
+.page-number-btn:hover {
+  color: #1f975d;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.page-number-btn {
+  padding: 0 1rem;
+  font-size: 1.2rem;
+  color: #333;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
